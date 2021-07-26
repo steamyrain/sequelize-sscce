@@ -37,5 +37,5 @@ export async function run() {
 
   log(await Foo.create({ name: 'TS foo' }));
   log(await Foo.create({ name: 'second row' }));
-  expect(await Foo.count()).to.equal(1);
+  expect(await Foo.count()).to.equal(2);
 }
