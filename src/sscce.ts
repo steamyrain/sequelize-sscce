@@ -25,7 +25,7 @@ export async function run() {
   class Foo extends Model {};
   Foo.init({
     id: {
-      type: DataTypes.INTEGER.UNSIGNED
+      type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true
     },
