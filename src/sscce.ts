@@ -24,6 +24,11 @@ export async function run() {
 
   class Foo extends Model {};
   Foo.init({
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED
+      autoIncrement: true,
+      primaryKey: true
+    },
     name: DataTypes.TEXT
   }, {
     sequelize,
@@ -37,5 +42,6 @@ export async function run() {
 
   log(await Foo.create({ name: 'TS foo' }));
   log(await Foo.create({ name: 'second row' }));
+  log(await Foo.findByPk(1))
   expect(await Foo.count()).to.equal(2);
 }
