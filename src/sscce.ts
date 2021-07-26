@@ -24,6 +24,11 @@ export async function run() {
 
   class Foo extends Model {};
   Foo.init({
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
     name: DataTypes.TEXT
   }, {
     sequelize,
@@ -36,5 +41,7 @@ export async function run() {
   expect(spy).to.have.been.called;
 
   log(await Foo.create({ name: 'TS foo' }));
-  expect(await Foo.count()).to.equal(1);
+  log(await Foo.create({ name: 'second row' }));
+  log(await Foo.findByPk(1))
+  expect(await Foo.count()).to.equal(2);
 }
